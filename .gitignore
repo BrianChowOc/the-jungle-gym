@@ -1,0 +1,42 @@
+# Node modules
+/node_modules/
+
+# Fichiers de log
+*.log
+
+# Fichiers de dépendances spécifiques à l'environnement
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers générés par l'environnement de développement
+.env
+.env.local
+.env.*.local
+
+# Fichiers de système d'exploitation (macOS, Windows, etc.)
+.DS_Store
+Thumbs.db
+
+# IDEs et éditeurs de texte (Visual Studio Code, JetBrains, etc.)
+.vscode/
+.idea/
+
+# Répertoires temporaires
+/tmp
+/dist
+/build
+
+# Cache npm et yarn
+.npm/
+.yarn/
+yarn.lock
+
+# Fichiers de test ou de couverture (généralement dans les projets de tests)
+coverage/
+
+# Répertoires de dépendances locales dans certains outils (par exemple, bower)
+bower_components/
+
+# Fichiers de configuration de dépendances locales
+package-lock.json
