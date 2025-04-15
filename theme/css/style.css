@@ -241,7 +241,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .text-color {
-  color: #FFCE00;
+  color: rgb(245, 99, 75);
 }
 
 .text-black {
@@ -381,7 +381,7 @@ ul.dropdown-menu li {
   padding: 180px 0px;
 }
 .slider h1 {
-  font-size: 95px;
+  font-size: 90px;
   line-height: 95px;
 }
 .slider span.subhead {
