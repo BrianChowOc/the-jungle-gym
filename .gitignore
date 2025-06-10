@@ -40,3 +40,52 @@ bower_components/
 
 # Fichiers de configuration de dépendances locales
 package-lock.json
+
+# ====================================
+# Ajouts spécifiques DevOps
+# ====================================
+
+# Terraform
+# Fichiers d'état Terraform, contenant des informations sensibles sur l'infrastructure
+.terraform/                 # Dossier de cache et plugins Terraform
+*.tfstate                   # Fichier d'état par défaut
+*.tfstate.backup            # Sauvegardes automatiques de l'état
+.terraform.lock.hcl         # Fichier de verrouillage pour les fournisseurs (providers)
+
+# Fichiers de variables Terraform
+# Il est TRÈS IMPORTANT de ne pas committer les fichiers de variables sensibles (ex: mots de passe, clés API)
+# Si vous avez des variables sensibles, utilisez des outils de gestion de secrets (Vault, AWS Secrets Manager, etc.)
+# ou des fichiers .tfvars chargés localement et ignorés.
+# Par exemple, si vous avez un fichier pour vos variables sensibles :
+# *.auto.tfvars.json        # Fichiers de variables JSON auto-chargés
+# *.auto.tfvars             # Fichiers de variables auto-chargés
+# dev.tfvars                # Exemple de fichier de variables spécifique à un environnement local non partagé
+
+# Ansible
+# Fichiers de cache et temporaires générés par Ansible
+.ansible/                   # Dossier de cache et de logs d'Ansible
+*tmp/                       # Répertoires temporaires souvent créés par Ansible
+
+# Fichiers d'inventaire sensibles ou temporaires
+# Si vous avez des fichiers d'inventaire contenant des informations sensibles ou spécifiques à un environnement local, ignorez-les.
+# inventory.local           # Exemple d'inventaire local
+# hosts.bak                 # Sauvegardes d'inventaire
+
+# Jenkins
+# Fichiers de build générés par Jenkins localement ou lors de tests de pipeline
+# Généralement, Jenkins clone le dépôt dans un workspace temporaire, donc ces fichiers sont moins critiques.
+# Cependant, si vous avez des artefacts de build ou des fichiers de cache générés localement, ajoutez-les.
+# /target/                  # Si Jenkins build des artefacts dans ce dossier (ex: Maven, Gradle)
+# /out/                     # Autre dossier de sortie courant
+
+# Kubernetes
+# Fichiers de configuration kubectl sensibles
+# Le fichier kubeconfig contient les informations d'authentification pour vos clusters Kubernetes.
+# Il est CRUCIAL de ne JAMAIS le committer.
+# ~/.kube/config             # Chemin typique du kubeconfig (vous devez l'ajouter pour votre propre configuration locale)
+# config                    # Si vous avez un fichier kubeconfig nommé 'config' à la racine de votre projet ou dans un sous-dossier
+# *.kubeconfig              # Tout fichier se terminant par .kubeconfig
+
+# Autres fichiers et répertoires de cache généraux pour les outils DevOps
+.history/                   # Historique de commandes ou de sessions (ex: DBeaver, autres IDEs)
+.vagrant/                   # Si vous utilisez Vagrant
