@@ -1,0 +1,6 @@
+---
+- name: Installer K3s sur l'instance
+  hosts: k3s
+  become: yes
+  roles:
+    - k3s

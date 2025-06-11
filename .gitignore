@@ -1,3 +1,7 @@
+# ====================================
+# NODE & ENVIRONNEMENT
+# ====================================
+
 # Node modules
 /node_modules/
 
@@ -14,29 +18,82 @@ yarn-error.log*
 .env.local
 .env.*.local
 
-# Fichiers de système d'exploitation (macOS, Windows, etc.)
+# Fichiers système (macOS, Windows)
 .DS_Store
 Thumbs.db
 
-# IDEs et éditeurs de texte (Visual Studio Code, JetBrains, etc.)
+# IDEs et éditeurs
 .vscode/
 .idea/
 
-# Répertoires temporaires
-/tmp
-/dist
-/build
+# ====================================
+# BUILD & TEMPORAIRES
+# ====================================
 
-# Cache npm et yarn
+# Répertoires de build
+/dist/
+/build/
+/tmp/
+/out/
+/target/
+
+# Fichiers de cache npm/yarn
 .npm/
 .yarn/
+
+# Lock files
+package-lock.json
 yarn.lock
 
-# Fichiers de test ou de couverture (généralement dans les projets de tests)
+# Couverture de tests
 coverage/
 
-# Répertoires de dépendances locales dans certains outils (par exemple, bower)
+# Bower
 bower_components/
 
-# Fichiers de configuration de dépendances locales
-package-lock.json
+# ====================================
+# TERRAFORM
+# ====================================
+
+# Dossiers et fichiers Terraform à tous les niveaux
+**/.terraform/
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.backup
+
+# ====================================
+# ANSIBLE
+# ====================================
+
+# Cache et temporaires Ansible
+.ansible/
+**/*tmp/
+
+# Inventaire sensible ou temporaire
+inventory.local
+hosts.bak
+
+# ====================================
+# VAGRANT
+# ====================================
+
+.vagrant/
+
+# ====================================
+# KUBERNETES
+# ====================================
+
+# Fichiers de configuration Kubernetes
+**/config
+**/*.kubeconfig
+
+# ====================================
+# DIVERS / OPS
+# ====================================
+
+# Historique de commandes ou sessions (ex: DBeaver, autres IDEs)
+.history/
+
+# ====================================
+# FIN
+# ====================================

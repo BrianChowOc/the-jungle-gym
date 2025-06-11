@@ -1,53 +1,82 @@
 pipeline {
-    agent {
-        kubernetes {
-          
-            label 'kubernetes-agent-template' 
-           
-            namespace 'jenkins'
-           
-        }
+  agent {
+    label 'kubernetes-agent'
+  }
+
+  environment {
+    DEPLOY_ENV = "${env.BRANCH_NAME}"
+    DOCKER_IMAGE = 'cbrian42/jungle-gym'
+    DOCKER_CREDS = credentials('dockerhub-creds')
+  }
+
+  stages {
+    stage('Build') {
+      steps {
+        echo "✅ Build du code pour ${DEPLOY_ENV}"
+        sh 'npm install && npm run build'
+      }
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the code from the repository
-                checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                // Example build step
-                echo 'Building the project... Develop Branch'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                // Example test step
-                echo 'Running tests...'
-            }
-        }
-
-        stage('Post-Test') {
-            steps {
-                // Example post-test step
-                echo 'Tests completed!'
-            }
-        }
+    stage('Lint & Format') {
+      steps {
+        echo "🧐 Exécution des linters HTML, CSS et vérification du formatage"
+        sh 'npm run lint:html'
+        sh 'npm run lint:css'
+        sh 'npm run format'
+      }
     }
 
-    post {
-        always {
-            echo 'Pipeline finished.'
+    stage('Docker Build & Push') {
+      steps {
+        script {
+          echo "📦 Construction de l'image Docker pour ${DEPLOY_ENV}"
+          sh "docker build -t ${DOCKER_IMAGE}:${DEPLOY_ENV} ."
+          withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+            sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+            sh "docker push ${DOCKER_IMAGE}:${DEPLOY_ENV}"
+          }
         }
-        success {
-            echo 'Pipeline succeeded!'
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
+      }
     }
+
+    stage('Deploy to DEV') {
+      when {
+        branch 'develop'
+      }
+      steps {
+        echo "🚀 Déploiement sur l'environnement de développement"
+        sh 'kubectl apply -f k8s/dev/'
+      }
+    }
+
+    stage('Deploy to staging') {
+      when {
+        branch 'staging'
+      }
+      steps {
+        echo "🚀 Déploiement sur l'environnement de préproduction"
+        sh 'kubectl apply -f k8s/staging/'
+      }
+    }
+
+    stage('Deploy to Production') {
+      when {
+        branch 'prod'
+      }
+      steps {
+        input message: "🛑 Confirmer le déploiement en production ?", ok: "Déployer"
+        echo "🚀 Déploiement en production"
+        sh 'kubectl apply -f k8s/prod/'
+      }
+    }
+  }
+
+  post {
+    success {
+      echo "✅ Pipeline terminé avec succès pour ${DEPLOY_ENV}"
+    }
+    failure {
+      echo "❌ Pipeline échouée sur ${DEPLOY_ENV}"
+    }
+  }
 }
