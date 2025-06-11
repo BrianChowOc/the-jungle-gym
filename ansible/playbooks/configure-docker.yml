@@ -1,0 +1,6 @@
+---
+- name: Installer et configurer Docker
+  hosts: k3s
+  become: yes
+  roles:
+    - docker
