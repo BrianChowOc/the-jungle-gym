@@ -6,7 +6,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build"
+    "build": "gulp build",
+    "lint:html": "htmlhint .",
+    "lint:css": "stylelint \"**/*.css\"",
+    "format": "prettier --check ."
   },
   "dependencies": {
     "browser-sync": "^2.27.10",
@@ -24,5 +27,15 @@
     "jshint": "^2.13.4",
     "jshint-stylish": "^2.2.1",
     "sass": "^1.53.0"
+  },
+  "devDependencies": {
+    "@eslint/css": "^0.8.1",
+    "eslint": "^9.28.0",
+    "globals": "^16.2.0",
+    "htmlhint": "^1.5.1",
+    "jest": "^30.0.0",
+    "prettier": "^3.5.3",
+    "stylelint": "^16.20.0",
+    "stylelint-config-standard": "^38.0.0"
   }
 }

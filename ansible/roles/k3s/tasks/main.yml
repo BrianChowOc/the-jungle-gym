@@ -1,0 +1,19 @@
+---
+- name: Installer K3s
+  shell: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--tls-san 13.38.43.138" sh -
+
+- name: Créer un dossier pour kubeconfig sur la machine Jenkins
+  become: false
+  local_action: >
+    command mkdir -p {{kubeconfig_path}}
+
+- name: Copier le kubeconfig localement pour Jenkins
+  fetch:
+    src: /etc/rancher/k3s/k3s.yaml
+    dest: "{{ kubeconfig_path }}k3s.yaml"
+    flat: yes
+
+- name: Modifier le serveur dans le kubeconfig (localhost -> IP publique)
+  become: false
+  local_action: >
+    command sed -i 's/127.0.0.1/{{ inventory_hostname }}/' {{kubeconfig_path}}k3s.yaml
