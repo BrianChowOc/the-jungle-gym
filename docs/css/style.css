@@ -104,23 +104,14 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .btn-main, .btn-small, .btn-transparent {
-  background: linear-gradient(90deg, rgb(245, 99, 75) 0%, #fe9418 100%);
+  background: linear-gradient(90deg, #d76417 0%, #9F3C1D 100%);
   color: #fff;
+  border: 0px;
 }
 .btn-main:hover, .btn-small:hover, .btn-transparent:hover {
-  background: linear-gradient(90deg, #fe9418 0%, rgb(245, 99, 75) 100%);
+  background: linear-gradient(90deg, #d76417 0%, #9F3C1D 100%);
   color: #fff !important;
   transform: translateY(-5px);
-}
-
-.btn-solid-border {
-  border: 2px solid rgb(245, 99, 75);
-  background: transparent;
-  color: #fff;
-}
-.btn-solid-border:hover {
-  border: 2px solid rgb(245, 99, 75);
-  background: rgb(245, 99, 75);
 }
 
 .btn-white {
@@ -185,7 +176,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .section {
-  padding: 100px 0;
+  padding: 80px 0;
 }
 
 .section-title {
@@ -381,7 +372,7 @@ ul.dropdown-menu li {
   padding: 180px 0px;
 }
 .slider h1 {
-  font-size: 90px;
+  font-size: 95px;
   line-height: 95px;
 }
 .slider span.subhead {
@@ -443,7 +434,7 @@ ul.dropdown-menu li {
   width: 100%;
   height: 0px;
   transition: all 600ms ease;
-  background: linear-gradient(90deg, rgb(245, 99, 75) 0%, #fe9418 100%);
+  background: linear-gradient(90deg, #d76417 0%, #9F3C1D 100%);
   border-color: rgb(245, 99, 75);
 }
 .hover-style-1 h3, .hover-style-1 p, .hover-style-1 a, .hover-style-1 i, .hover-style-1 h4 {
