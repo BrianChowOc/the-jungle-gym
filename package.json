@@ -1,0 +1,12 @@
+{
+    "name": "jungle-gym",
+    "version": "1.0.0",
+    "description": "Projet du site jungle gym",
+    "scripts": {
+      "start": "http-server ./"
+    },
+    "devDependencies": {
+      "http-server": "^14.1.1"
+    }
+  }
+  
