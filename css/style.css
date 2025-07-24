@@ -104,13 +104,13 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .btn-main, .btn-small, .btn-transparent {
-  background: linear-gradient(90deg, #d76417 0%, #9F3C1D 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #FAFF03 0%, #FAFF03 100%);
+  color: #000000;
   border: 0px;
 }
 .btn-main:hover, .btn-small:hover, .btn-transparent:hover {
-  background: linear-gradient(90deg, #d76417 0%, #9F3C1D 100%);
-  color: #fff !important;
+  background: linear-gradient(90deg, #FAFF03 0%, #FAFF03 100%);
+  color: #000000 !important;
   transform: translateY(-5px);
 }
 
@@ -231,8 +231,12 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   display: none;
 }
 
+#textYellow {
+  color: #FAFF03;
+}
+
 .text-color {
-  color: rgb(245, 99, 75);
+  color: #9E0A0A;
 }
 
 .text-black {
@@ -262,7 +266,7 @@ a {
 }
 
 a:hover, a:focus {
-  color: rgb(245, 99, 75) !important;
+  color: #FAFF03 !important;
   text-decoration: none !important;
   outline: 0;
 }
@@ -291,7 +295,7 @@ a:hover, a:focus {
   transition: all 0.25s ease;
 }
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
-  color: rgb(245, 99, 75);
+  color: #9E0A0A;
 }
 
 .top-header {
@@ -344,7 +348,7 @@ a:hover, a:focus {
 
 .dropdown-item:hover {
   background: transparent;
-  color: rgb(245, 99, 75);
+  color: #9E0A0A;
 }
 
 ul.dropdown-menu li {
@@ -434,8 +438,8 @@ ul.dropdown-menu li {
   width: 100%;
   height: 0px;
   transition: all 600ms ease;
-  background: linear-gradient(90deg, #d76417 0%, #9F3C1D 100%);
-  border-color: rgb(245, 99, 75);
+  background: #9E0A0A;
+  opacity: 0.9;
 }
 .hover-style-1 h3, .hover-style-1 p, .hover-style-1 a, .hover-style-1 i, .hover-style-1 h4 {
   position: relative;
