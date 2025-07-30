@@ -31,30 +31,32 @@
 		rules: {
 			user_name: {
 				required: true,
-				minlength: 4
+				minlength: 2
 			},
 			user_email: {
 				required: true,
 				email: true
 			},
-			// user_subject: {
-			// 	required: false
-			// },
+			user_subject: {
+			 	required: true
+			},
 			user_message: {
 				required: true
 			}
 		},
 		messages: {
 			user_name: {
-				required: 'Come on, you have a name don\'t you?',
-				minlength: 'Your name must consist of at least 2 characters'
+				required: 'Entrer un nom',
+				minlength: 'Le nom doit être au minimum de 2 caractères'
 			},
 			user_email: {
-				required: 'Please put your email address'
+				required: 'Entrer une adresse email'
+			},
+			user_subject: {
+				required: 'Renseigner un objet du message'
 			},
 			user_message: {
-				required: 'Put some messages here?',
-				minlength: 'Your name must consist of at least 2 characters'
+				required: 'Message vide',
 			}
 
 		},
