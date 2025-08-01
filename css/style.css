@@ -7,6 +7,8 @@
 
 /*=== MEDIA QUERY ===*/
 @import url("https://fonts.googleapis.com/css?family=Barlow+Condensed:400,500,600,700|Montserrat|Poppins:400,500,600,700");
+@import url('https://fonts.googleapis.com/css2?family=Allan:wght@400;700&family=Dela+Gothic+One&family=Fugaz+One&family=Racing+Sans+One&display=swap');
+
 body {
   line-height: 1.8;
   font-family: "Montserrat", sans-serif;
