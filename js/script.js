@@ -114,3 +114,33 @@
 	});
 
 })(jQuery);
+
+// Chargement du menu et du footer partagés
+function chargerInclude(idEmplacement, fichier, apres) {
+  var emplacement = document.getElementById(idEmplacement);
+  if (!emplacement) return;
+  fetch(fichier)
+    .then(function (reponse) { return reponse.text(); })
+    .then(function (html) {
+      emplacement.innerHTML = html;
+      if (apres) apres();
+    });
+}
+
+// Met en surbrillance le lien de la page en cours
+function marquerLienActif() {
+  var page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('#navbar .nav-link').forEach(function (lien) {
+    if (lien.getAttribute('href') === page) {
+      lien.parentElement.classList.add('active');
+    }
+  });
+  document.querySelectorAll('#navbar .dropdown-item').forEach(function (lien) {
+    if (lien.getAttribute('href') === page) {
+      lien.closest('.dropdown').classList.add('active');
+    }
+  });
+}
+
+chargerInclude('nav-placeholder', 'includes/nav.html', marquerLienActif);
+chargerInclude('footer-placeholder', 'includes/footer.html');
